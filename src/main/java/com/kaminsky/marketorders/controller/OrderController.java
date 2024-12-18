@@ -28,7 +28,7 @@ public class OrderController {
     public ResponseEntity<String> publishMessage(@Validated @RequestBody NewOrder order) {
         order.setId(UUID.randomUUID());
 
-        if (order.getStatus().equals(null)) {
+        if (order.getStatus() == null) {
             order.setStatus(Status.IN_PROGRESS);
         }
 
