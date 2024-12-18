@@ -1,6 +1,6 @@
 package com.kaminsky.marketorders.config;
 
-import com.kaminsky.marketorders.entity.NewOrder;
+import com.kaminsky.entity.MarketOrder;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +16,9 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
     @Bean
-    public ProducerFactory<String, NewOrder> producerFactory() {
+    public ProducerFactory<String, MarketOrder> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         configProps.put(ProducerConfig.ACKS_CONFIG, "all");
@@ -28,7 +28,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, NewOrder> kafkaTemplate() {
+    public KafkaTemplate<String, MarketOrder> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

@@ -1,7 +1,7 @@
 package com.kaminsky.marketorders.controller;
 
-import com.kaminsky.marketorders.entity.NewOrder;
-import com.kaminsky.marketorders.entity.Status;
+import com.kaminsky.entity.MarketOrder;
+import com.kaminsky.status.Status;
 import com.kaminsky.marketorders.service.ProducerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class OrderController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<String> publishMessage(@Validated @RequestBody NewOrder order) {
+    public ResponseEntity<String> publishMessage(@RequestBody MarketOrder order) {
         order.setId(UUID.randomUUID());
 
         if (order.getStatus() == null) {

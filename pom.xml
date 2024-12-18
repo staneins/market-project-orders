@@ -57,6 +57,12 @@
             <artifactId>spring-kafka-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.kaminsky</groupId>
+            <artifactId>market-order-library</artifactId>
+            <version>1.0.0</version>
+            <classifier>lib</classifier>
+        </dependency>
     </dependencies>
 
     <build>
